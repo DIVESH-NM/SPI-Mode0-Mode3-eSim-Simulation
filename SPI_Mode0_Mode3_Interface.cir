@@ -1,0 +1,30 @@
+.title KiCad schematic
+U4 Net-_v4-Pad1_ Net-_U4-Pad2_ adc_bridge_1
+v4 Net-_v4-Pad1_ GND pulse
+v2 Net-_U2-Pad1_ GND pulse
+v3 Net-_U3-Pad1_ GND pulse
+U9 GND Net-_U15-Pad3_ adc_bridge_1
+U1 Net-_v1-Pad1_ Net-_U1-Pad2_ adc_bridge_1
+v1 Net-_v1-Pad1_ GND pulse
+U12 Net-_U12-Pad1_ Net-_U10-Pad1_ Net-_U12-Pad3_ d_and
+U3 Net-_U3-Pad1_ Net-_U3-Pad2_ adc_bridge_1
+U8 Net-_U3-Pad2_ Net-_U10-Pad1_ d_inverter
+U5 Net-_U1-Pad2_ Net-_U2-Pad2_ Net-_U12-Pad1_ d_xor
+U2 Net-_U2-Pad1_ Net-_U2-Pad2_ adc_bridge_1
+U24 Net-_U22-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U17-Pad1_ unconnected-_U24-Pad6_ d_dff
+U22 Net-_U20-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U22-Pad5_ unconnected-_U22-Pad6_ d_dff
+U23 Net-_U21-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U13-Pad1_ unconnected-_U23-Pad6_ d_dff
+U21 Net-_U19-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U21-Pad5_ unconnected-_U21-Pad6_ d_dff
+U20 Net-_U16-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U20-Pad5_ unconnected-_U20-Pad6_ d_dff
+U19 Net-_U15-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U19-Pad5_ unconnected-_U19-Pad6_ d_dff
+U15 Net-_U4-Pad2_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad5_ unconnected-_U15-Pad6_ d_dff
+U16 Net-_U13-Pad1_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U16-Pad5_ unconnected-_U16-Pad6_ d_dff
+U7 /CS plot_v1
+U11 /SCLK plot_v1
+U14 /MOSI plot_v1
+U10 Net-_U10-Pad1_ /SCLK dac_bridge_1
+U6 Net-_U3-Pad2_ /CS dac_bridge_1
+U18 /MISO plot_v1
+U17 Net-_U17-Pad1_ /MISO dac_bridge_1
+U13 Net-_U13-Pad1_ /MOSI dac_bridge_1
+.end

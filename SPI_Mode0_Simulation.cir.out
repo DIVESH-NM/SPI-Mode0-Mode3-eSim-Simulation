@@ -1,0 +1,53 @@
+* SPI Mode 0 (CPOL=0, CPHA=0) Master-Slave Simulation
+
+* Voltage Pulse Sources (Mode 0: v2 CPOL = 0V)
+v1 Net-_v1-Pad1_ GND pulse(0 5 12u 1n 1n 5u 10u)
+v2 Net-_v2-Pad1_ GND pulse(0 0 0 1n 1n 100u 200u)
+v3 Net-_v3-Pad1_ GND pulse(5 0 10u 1n 1n 85u 120u)
+v4 Net-_v4-Pad1_ GND pulse(0 5 8u 1n 1n 10u 20u)
+
+* Analog-to-Digital Bridges
+aU1 [Net-_v1-Pad1_] [Net-_U1-Pad2_] adc_mod
+aU2 [Net-_v2-Pad1_] [Net-_U2-Pad2_] adc_mod
+aU3 [Net-_v3-Pad1_] [Net-_U3-Pad2_] adc_mod
+aU4 [Net-_v4-Pad1_] [Net-_U4-Pad2_] adc_mod
+aU9 [GND] [Net-_U15-Pad3_] adc_mod
+
+* Clock Polarity (CPOL) & Chip Select (CS) Logic
+aU5 [Net-_U1-Pad2_ Net-_U2-Pad2_] Net-_U12-Pad1_ xor_mod
+aU8 Net-_U3-Pad2_ Net-_U10-Pad1_ inv_mod
+aU12 [Net-_U12-Pad1_ Net-_U10-Pad1_] Net-_U12-Pad3_ and_mod
+
+* 4-Bit Master Shift Register (U15 -> U19 -> U21 -> U23 -> MOSI)
+aU15 Net-_U4-Pad2_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad5_ nc15 dff_mod
+aU19 Net-_U15-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U19-Pad5_ nc19 dff_mod
+aU21 Net-_U19-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U21-Pad5_ nc21 dff_mod
+aU23 Net-_U21-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U13-Pad1_ nc23 dff_mod
+
+* 4-Bit Slave Shift Register (MOSI -> U16 -> U20 -> U22 -> U24 -> MISO)
+aU16 Net-_U13-Pad1_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U16-Pad5_ nc16 dff_mod
+aU20 Net-_U16-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U20-Pad5_ nc20 dff_mod
+aU22 Net-_U20-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U22-Pad5_ nc22 dff_mod
+aU24 Net-_U22-Pad5_ Net-_U12-Pad3_ Net-_U15-Pad3_ Net-_U15-Pad3_ Net-_U17-Pad1_ nc24 dff_mod
+
+* Digital-to-Analog Bridges for Output Plotting
+aU6 [Net-_U3-Pad2_] [/CS] dac_mod
+aU10 [Net-_U12-Pad3_] [/SCLK] dac_mod
+aU13 [Net-_U13-Pad1_] [/MOSI] dac_mod
+aU17 [Net-_U17-Pad1_] [/MISO] dac_mod
+
+* XSPICE Device Models
+.model adc_mod adc_bridge(in_low=0.8 in_high=2.0 rise_delay=1n fall_delay=1n)
+.model dac_mod dac_bridge(out_low=0.0 out_high=5.0 out_undef=2.5 input_load=5p t_rise=1n t_fall=1n)
+.model xor_mod d_xor(rise_delay=1n fall_delay=1n input_load=0.5p)
+.model inv_mod d_inverter(rise_delay=1n fall_delay=1n input_load=0.5p)
+.model and_mod d_and(rise_delay=1n fall_delay=1n input_load=0.5p)
+.model dff_mod d_dff(clk_delay=1n set_delay=1n reset_delay=1n ic=0 rise_delay=1n fall_delay=1n)
+
+* Transient Simulation & Plot Control
+.tran 100n 110u
+.control
+run
+plot v("/cs")+18 v("/sclk")+12 v("/mosi")+6 v("/miso")
+.endc
+.end
