@@ -53,12 +53,12 @@ Understanding this gate-level shift register and `CPOL`/`CPHA` XOR logic directl
 
 **Linux / macOS:**
 ```bash
-git clone https://github.com && cd SPI-Mode0-Mode3-eSim-Simulation && ngspice SPI_Mode0_Simulation.cir.out
+git clone https://github.com/DIVESH-NM/SPI-Mode0-Mode3-eSim-Simulation && cd SPI-Mode0-Mode3-eSim-Simulation && ngspice SPI_Mode0_Simulation.cir.out
 ```
 
 **Windows (Command Prompt):**
 ```bat
-git clone https://github.com && cd SPI-Mode0-Mode3-eSim-Simulation && for /f "delims=" %i in ('where /r C:\FOSSEE ngspice.exe') do "%i" SPI_Mode0_Simulation.cir.out
+git clone https://github.com/DIVESH-NM/SPI-Mode0-Mode3-eSim-Simulation && cd SPI-Mode0-Mode3-eSim-Simulation && for /f "delims=" %i in ('where /r C:\FOSSEE ngspice.exe') do "%i" SPI_Mode0_Simulation.cir.out
 ```
 *(Replace `SPI_Mode0_Simulation.cir.out` with `SPI_Mode3_Interface.cir.out` to launch **SPI Mode 3**.)*
 
