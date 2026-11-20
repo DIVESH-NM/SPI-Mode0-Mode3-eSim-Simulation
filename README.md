@@ -1,8 +1,6 @@
 # Configurable SPI Master-Slave Interface (Mode 0 & Mode 3) in eSim
 
-![Tool](https://shields.io)
-![Protocol](https://shields.io)
-![Institution](https://shields.io)
+**EDA Tool:** `eSim 2.4` | `KiCad` | `Ngspice` &nbsp;•&nbsp; **Protocol:** `SPI Mode 0 & Mode 3` &nbsp;•&nbsp; **Program:** `FOSSEE Winter Internship 2026 (IIT Bombay)`
 
 Circuit-level hardware modeling and Ngspice transient verification of a **4-bit Serial Peripheral Interface (SPI)** Master-Slave communication system supporting dynamic Clock Polarity (`CPOL`) and Clock Phase (`CPHA`) switching between **SPI Mode 0** and **SPI Mode 3**.
 
