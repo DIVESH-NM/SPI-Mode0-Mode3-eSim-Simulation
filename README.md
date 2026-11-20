@@ -49,15 +49,18 @@ Understanding this gate-level shift register and `CPOL`/`CPHA` XOR logic directl
 
 ---
 
-## 5. How to Reproduce Locally (Ngspice CLI)
-Clone or download this repository and run either netlist directly in Ngspice:
-```bash
-# Simulate SPI Mode 0 (CPOL = 0, CPHA = 0)
-ngspice SPI_Mode0_Simulation.cir.out
+## 5. One-Command Clone & Run (Auto-Detects Ngspice)
 
-# Simulate SPI Mode 3 (CPOL = 1, CPHA = 1)
-ngspice SPI_Mode3_Interface.cir.out
+**Linux / macOS:**
+```bash
+git clone https://github.com && cd SPI-Mode0-Mode3-eSim-Simulation && ngspice SPI_Mode0_Simulation.cir.out
 ```
+
+**Windows (Command Prompt):**
+```bat
+git clone https://github.com && cd SPI-Mode0-Mode3-eSim-Simulation && for /f "delims=" %i in ('where /r C:\FOSSEE ngspice.exe') do "%i" SPI_Mode0_Simulation.cir.out
+```
+*(Replace `SPI_Mode0_Simulation.cir.out` with `SPI_Mode3_Interface.cir.out` to launch **SPI Mode 3**.)*
 
 ---
 
